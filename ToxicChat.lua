@@ -58,9 +58,15 @@ end
 function ToxicChat.OnPlayerCombatState(event, inCombat)
     if inCombat ~= ToxicChat.inCombat then
         ToxicChat.inCombat = inCombat
-
+        local combatMessages = {
+            "Maybe I won't zerg this time.",
+            "I find it rude to laugh at a man with a sword.",
+            "War is life multiplied by some number that no one has ever heard of.",
+            "I swear, I'll get a kill one day.",
+            "Somebody's got to win this war, right?"
+        }
         if inCombat then
-            d("Entering Combat...")
+            d("Entering Combat..." .. combatMessages)
         else
             d("Exiting Combat...")
         end
