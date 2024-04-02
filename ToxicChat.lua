@@ -1,7 +1,7 @@
 -- Messaging Alerts:
---                  Displays when the player enters and exits combat
---                  Displays when the player enters and exits the water
---                  Displays when the player mounts and dismounts
+--                  Displays when the player enters and exits combat.
+--                  Displays when the player enters and exits the water.
+--                  Displays when the player mounts and dismounts.
 
 
 ToxicChat = {}
@@ -72,6 +72,7 @@ end
 -- SWIMMING HANDLER
 -- ##############################
 -- Handler for entering swimming state
+-- Display a random message based on a 1 in 5 chance. Added to reduce message spamming
 function ToxicChat.OnPlayerEnteredSwimming(event, isSwimming)
     local enteringMessages = {
         "Taking a dip...?",
@@ -80,6 +81,7 @@ function ToxicChat.OnPlayerEnteredSwimming(event, isSwimming)
         "Swimming time!",
         "You won't find Volendrung there...."
     }
+    local maxIndex = math.floor(#enteringMessages * 0.2)
     local randomIndex = math.random(1, #enteringMessages)
     local message = enteringMessages[randomIndex]
     d(message)
@@ -94,6 +96,7 @@ function ToxicChat.OnPlayerExitedSwimming(event, isNotSwimming)
         "That was refreshing!",
         "Time to dry off..."
     }
+    local maxIndex = math.floor(#exitingMessages * 0.2)
     local randomIndex = math.random(1, #exitingMessages)
     local message = exitingMessages[randomIndex]
     d(message)
@@ -108,24 +111,28 @@ end
 -- MOUNTING AND DISMOUNTING HANDLERS
 -- ##############################
 -- Check the changed mount state of the player
+-- Display a random message based on a 1 in 5 chance. Added to reduce message spamming
 function ToxicChat.OnPlayerMountState(event, IsMounted)
     if IsMounted ~= ToxicChat.IsMounted then
         ToxicChat.IsMounted = IsMounted
-        -- Mounted Random messages
+        -- Mounted Random messages and execution
         local mountedMessages ={
             "Giddy Up Horsey!",
             "Ridin' Dead Horses!",
             "I've been through the desert on a horse with no name, it felt good to be out of the rain...",
 
         }
+        local maxIndex = math.floor(#mountedMessages * 0.2)
         local randomIndex = math.random(1, #mountedMessages)
         local isMountedMessage = mountedMessages[randomIndex]
-        -- Not Mounted Random messages
+
+        -- Not Mounted Random messages and execution.
         local notMountedMessages = {
             "You`re not a rider unless you`ve fallen off seven times.",
             "Did you fall again?",
             "Need to get that saddle seen too."
         }
+        local maxIndex = math.floor(#notMountedMessages * 0.2)
         local randomIndex = math.random(1, #notMountedMessages)
         local isNotMounted = notMountedMessages[randomIndex]
 
