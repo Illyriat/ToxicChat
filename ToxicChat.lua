@@ -65,8 +65,11 @@ function ToxicChat.OnPlayerCombatState(event, inCombat)
             "I swear, I'll get a kill one day.",
             "Somebody's got to win this war, right?"
         }
+        local maxIndex = math.floor(#combatMessages * 0.2)
+        local randomIndex = math.random(1, #combatMessages)
+        local message = combatMessages[randomIndex]
         if inCombat then
-            d("Entering Combat..." .. combatMessages)
+            d("Entering Combat..." .. message)
         else
             d("Exiting Combat...")
         end
