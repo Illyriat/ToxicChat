@@ -1,4 +1,6 @@
 ToxicChat
+
+[![My Skills](https://skillicons.dev/icons?i=lua)](https://skillicons.dev)
 ---
 An Addon for The Elder Scrolls Online that trolls the user in the chat box when certain actions are detected.
 
